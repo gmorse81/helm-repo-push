@@ -13,7 +13,7 @@ RUN curl -L http://storage.googleapis.com/kubernetes-helm/${FILENAME} | tar zxv 
 # The image we keep
 FROM alpine:3.6
 
-RUN apk add --update --no-cache git ca-certificates bash
+RUN apk add --update --no-cache git ca-certificates bash curl
 
 COPY --from=build /tmp/linux-amd64/helm /bin/helm
 COPY /repo-push.sh /repo-push.sh
