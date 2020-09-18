@@ -2,8 +2,7 @@
 
 helm init --client-only
 helm repo add ${PLUGIN_REPO_NAME} ${HELM_REPO_URL}
-echo ${UPDATE_DEPENDENCIES}
-if [ "${UPDATE_DEPENDENCIES}" = "false" ]; then
+if [ "${PLUGIN_UPDATE_DEPENDENCIES}" = "false" ]; then
   helm package --version=$(cat .tags) --app-version=$(cat .tags) --save=false ${PLUGIN_CHART_SUBDIR}/.
 else
   helm package -u --version=$(cat .tags) --app-version=$(cat .tags) --save=false ${PLUGIN_CHART_SUBDIR}/.
