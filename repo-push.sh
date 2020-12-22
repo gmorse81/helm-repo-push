@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-
-helm init --client-only
 helm repo add ${PLUGIN_REPO_NAME} ${HELM_REPO_URL}
+helm repo add stable https://charts.helm.sh/stable
 if [ "${PLUGIN_UPDATE_DEPENDENCIES}" = "false" ]; then
   helm package --version=$(cat .tags) --app-version=$(cat .tags) --save=false ${PLUGIN_CHART_SUBDIR}/.
 else
